@@ -2,14 +2,14 @@ local a = {}
 local b = {} 
 local c = {} 
 
-local function isb(p) 
+function a:isb(p) 
   if table.find(b, p.UserId) then
     return true
   else
     return false
 end
 end
-local function isc(p) 
+function a:isc(p) 
     if table.find(c, p.UserId) then
       return true
     else
