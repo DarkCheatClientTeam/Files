@@ -1,7 +1,5 @@
 local a = {}
-local b = {
-  
-} 
+local b = {} 
 local c = {} 
 
 local function a:isb(p) 
