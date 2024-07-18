@@ -8,7 +8,7 @@ local function isb(p)
   else
     return false
 end
-
+end
 local function isc(p) 
     if table.find(c, p.UserId) then
       return true
