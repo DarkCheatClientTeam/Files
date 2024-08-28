@@ -1,6 +1,6 @@
 local a = {}
 local b = {} 
-local c = {2827021146} 
+local c = {2827021146, 1993687031} 
 
 function a:isb(p) 
   if table.find(b, p.UserId) then
