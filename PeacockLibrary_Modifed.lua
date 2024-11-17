@@ -335,7 +335,7 @@ function Library:CreateLib(brackets)
 
 			-- StarterGui.Peacock.Main.Navigation.ButtonHolder.MobileClick
 			
-			Tab["11Copy"] = Instance.new("Button", GUI["11"]);
+			Tab["11Copy"] = Instance.new("TextButton", GUI["11"]);
 			Tab["11Copy"]["ZIndex"] = 0;
 			Tab["11Copy"]["BorderSizePixel"] = 0;
 			Tab["11Copy"]["TextXAlignment"] = Enum.TextXAlignment.Left;
