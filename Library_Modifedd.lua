@@ -1,33 +1,5 @@
 --[[
-
-█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░██░░░░░░░░████░░░░░░██░░░░░░█░░░░░░░░░░█
-█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░██░░▄▀▄▀░░████░░▄▀░░██░░▄▀░░█░░▄▀▄▀▄▀░░█
-█░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░██░░▄▀░░░░████░░▄▀░░██░░▄▀░░█░░░░▄▀░░░░█
-█░░▄▀░░██░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░██████░░▄▀░░██░░▄▀░░███░░▄▀░░███
-█░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░█░░▄▀░░█████████░░▄▀░░░░░░▄▀░░██████░░▄▀░░██░░▄▀░░███░░▄▀░░███
-█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░█░░▄▀░░█████████░░▄▀▄▀▄▀▄▀▄▀░░██████░░▄▀░░██░░▄▀░░███░░▄▀░░███
-█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░█░░▄▀░░█████████░░▄▀░░░░░░▄▀░░██████░░▄▀░░██░░▄▀░░███░░▄▀░░███
-█░░▄▀░░█████████░░▄▀░░█████████░░▄▀░░██░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░█░░▄▀░░█████████░░▄▀░░██░░▄▀░░██████░░▄▀░░██░░▄▀░░███░░▄▀░░███
-█░░▄▀░░█████████░░▄▀░░░░░░░░░░█░░▄▀░░██░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░░░░░█░░▄▀░░██░░▄▀░░░░████░░▄▀░░░░░░▄▀░░█░░░░▄▀░░░░█
-█░░▄▀░░█████████░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░██░░▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░██░░▄▀▄▀░░████░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀░░█
-█░░░░░░█████████░░░░░░░░░░░░░░█░░░░░░██░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░░░░░░░░░█░░░░░░██░░░░░░░░████░░░░░░░░░░░░░░█░░░░░░░░░░█
-█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-█░░░░░░█████████░░░░░░░░░░█░░░░░░░░░░░░░░███░░░░░░░░░░░░░░░░███░░░░░░░░░░░░░░█░░░░░░░░░░░░░░░░███░░░░░░░░██░░░░░░░░█
-█░░▄▀░░█████████░░▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀░░██░░▄▀▄▀░░█
-█░░▄▀░░█████████░░░░▄▀░░░░█░░▄▀░░░░░░▄▀░░███░░▄▀░░░░░░░░▄▀░░███░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░░░▄▀░░███░░░░▄▀░░██░░▄▀░░░░█
-█░░▄▀░░███████████░░▄▀░░███░░▄▀░░██░░▄▀░░███░░▄▀░░████░░▄▀░░███░░▄▀░░██░░▄▀░░█░░▄▀░░████░░▄▀░░█████░░▄▀▄▀░░▄▀▄▀░░███
-█░░▄▀░░███████████░░▄▀░░███░░▄▀░░░░░░▄▀░░░░█░░▄▀░░░░░░░░▄▀░░███░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░░░▄▀░░█████░░░░▄▀▄▀▄▀░░░░███
-█░░▄▀░░███████████░░▄▀░░███░░▄▀▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░███░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░███████░░░░▄▀░░░░█████
-█░░▄▀░░███████████░░▄▀░░███░░▄▀░░░░░░░░▄▀░░█░░▄▀░░░░░░▄▀░░░░███░░▄▀░░░░░░▄▀░░█░░▄▀░░░░░░▄▀░░░░█████████░░▄▀░░███████
-█░░▄▀░░███████████░░▄▀░░███░░▄▀░░████░░▄▀░░█░░▄▀░░██░░▄▀░░█████░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░███████████░░▄▀░░███████
-█░░▄▀░░░░░░░░░░█░░░░▄▀░░░░█░░▄▀░░░░░░░░▄▀░░█░░▄▀░░██░░▄▀░░░░░░█░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀░░░░░░███████░░▄▀░░███████
-█░░▄▀▄▀▄▀▄▀▄▀░░█░░▄▀▄▀▄▀░░█░░▄▀▄▀▄▀▄▀▄▀▄▀░░█░░▄▀░░██░░▄▀▄▀▄▀░░█░░▄▀░░██░░▄▀░░█░░▄▀░░██░░▄▀▄▀▄▀░░███████░░▄▀░░███████
-█░░░░░░░░░░░░░░█░░░░░░░░░░█░░░░░░░░░░░░░░░░█░░░░░░██░░░░░░░░░░█░░░░░░██░░░░░░█░░░░░░██░░░░░░░░░░███████░░░░░░███████
-████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
-
-	Made By God_Stando
+	Made By God_Stando, Modifed By Gregory909
 Developers:
 	God_Stando Discord | God_Stando#6979
 
@@ -40,7 +12,40 @@ local tweenService = game:GetService("TweenService")
 local input = game:GetService("UserInputService")
 local runService = game:GetService("RunService")
 local coreGui = game:GetService("CoreGui")
-local uis = game:GetService("UserInputService")
+function dragify(Frame)
+    dragToggle = nil
+    local dragSpeed = 0
+    dragInput = nil
+    dragStart = nil
+    local dragPos = nil
+    function updateInput(input)
+        local Delta = input.Position - dragStart
+        local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+        game:GetService("TweenService"):Create(Frame, TweenInfo.new(0.25), {Position = Position}):Play()
+    end
+    Frame.InputBegan:Connect(function(input)
+        if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) and UIS:GetFocusedTextBox() == nil then
+            dragToggle = true
+            dragStart = input.Position
+            startPos = Frame.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragToggle = false
+                end
+            end)
+        end
+    end)
+    Frame.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+    game:GetService("UserInputService").InputChanged:Connect(function(input)
+        if input == dragInput and dragToggle then
+            updateInput(input)
+        end
+    end)
+end
 
 -- Vars
 local lp = players.LocalPlayer
@@ -93,35 +98,7 @@ function Library:CreateLib(brackets)
 		GUI["6g"]["Name"] = [[Drag]];
 		GUI["6g"]["Active"] = true
 		GUI["6g"] = GUI["6g"]
-		local dragging = false
-		local dragInput, mousePos, framePos
-
-		GUI["6g"].InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 then
-				dragging = true
-				mousePos = input.Position
-				framePos = GUI["6g"].Position
-
-				input.Changed:Connect(function()
-					if input.UserInputState == Enum.UserInputState.End then
-						dragging = false
-					end
-				end)
-			end
-		end)
-
-		GUI["6g"].InputChanged:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseMovement then
-				dragInput = input
-			end
-		end)
-
-		input.InputChanged:Connect(function(input)
-			if input == dragInput and dragging then
-				local delta = input.Position - mousePos
-				GUI["6g"].Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y)
-			end
-		end)
+		dragify(GUI["6g"])
 
 		-- StarterGui.Peacock.HideFrames
 		GUI["5e"] = Instance.new("TextButton", GUI["1"]);
@@ -422,7 +399,6 @@ function Library:CreateLib(brackets)
 		function Tab:Deactivate()
 			if Tab.Active then
 				Tab.Active = false
-				Tab.Hover = false
 				Library:tween(Tab["11"], {TextColor3 = Color3.fromRGB(200, 200, 200)})
 				Library:tween(Tab["13"], {ImageColor3 = Color3.fromRGB(200, 200, 200)})
 				Library:tween(Tab["11"], {BackgroundTransparency = 1})
@@ -433,8 +409,6 @@ function Library:CreateLib(brackets)
 		-- Codes Stuff
 		do
 			Tab["11"].MouseEnter:Connect(function()
-				Tab.Hover = true
-
 				if not Tab.Active then
 					Library:tween(Tab["11"], {TextColor3 = Color3.fromRGB(255, 255, 255)})
 					Library:tween(Tab["13"], {ImageColor3 = Color3.fromRGB(255, 255, 255)})
@@ -442,7 +416,6 @@ function Library:CreateLib(brackets)
 			end)
 
 			Tab["11"].MouseLeave:Connect(function()
-				Tab.Hover = false
 
 				if not Tab.Active then
 					Library:tween(Tab["11"], {TextColor3 = Color3.fromRGB(200, 200, 200)})
@@ -450,14 +423,8 @@ function Library:CreateLib(brackets)
 				end
 			end)
 
-			uis.InputBegan:Connect(function(input, gpe)
-				if gpe then return end
-
-				if input.UserInputType == Enum.UserInputType.MouseButton1 then
-					if Tab.Hover then
+		Tab["11"].MouseButton1Click:Connect(function()
 						Tab:Activate()
-					end
-				end
 			end)
 
 			if GUI.CurrentTab == nil then
