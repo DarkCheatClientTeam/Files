@@ -95,24 +95,6 @@ function Library:CreateLib(brackets)
 			end
 		end)
 
-		-- StarterGui.Peacock.HideFrames
-		GUI["5e"] = Instance.new("TextButton", GUI["1"]);
-		GUI["5e"]["TextSize"] = 15;
-		GUI["5e"]["BackgroundColor3"] = Color3.fromRGB(101, 49, 6);
-		GUI["5e"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
-		GUI["5e"]["Size"] = UDim2.new(0.134, 0, 0.034, 0);
-		GUI["5e"]["Name"] = [[HideFrames]];
-		GUI["5e"]["Text"] = [[Hide Gui/ReHide Gui]];
-		GUI["5e"]["Font"] = Enum.Font.Ubuntu;
-		GUI["5e"]["Position"] = UDim2.new(0.335, 0, 0.082, 0);
-		GUI["5e"].MouseButton1Click:Connect(function()
-			GUI["2"]["Visible"] = not GUI["2"]["Visible"]
-		end)
-
-		-- StarterGui.Peacock.HideFrames.UICorner
-		GUI["5f"] = Instance.new("UICorner", GUI["5e"]);
-		GUI["5f"]["CornerRadius"] = UDim.new(0, 2);
-
 		-- StarterGui.Peacock.Main
 		GUI["2"] = Instance.new("Frame", GUI["6g"]);
 		GUI["2"]["BackgroundColor3"] = Color3.fromRGB(15, 15, 15);
@@ -249,7 +231,7 @@ function Library:CreateLib(brackets)
 		-- StarterGui.Peacock.Main.Navigation
 		GUI["d"] = Instance.new("Frame", GUI["2"]);
 		GUI["d"]["BorderSizePixel"] = 0;
-		GUI["d"]["BackgroundColor3"] = Color3.fromRGB(137, 66, 9);
+		GUI["d"]["BackgroundColor3"] = Color3.fromRGB(14,14,14);
 		GUI["d"]["Size"] = UDim2.new(0, 120, 1, -30);
 		GUI["d"]["Position"] = UDim2.new(0, 0, 0, 30);
 		GUI["d"]["Name"] = [[Navigation]];
@@ -279,14 +261,14 @@ function Library:CreateLib(brackets)
 		-- StarterGui.Peacock.Main.Navigation.Hide
 		GUI["i"] = Instance.new("Frame", GUI["d"]);
 		GUI["i"]["BorderSizePixel"] = 0;
-		GUI["i"]["BackgroundColor3"] = Color3.fromRGB(137, 66, 9);
+		GUI["i"]["BackgroundColor3"] = Color3.fromRGB(13,13,13);
 		GUI["i"]["Size"] = UDim2.new(1, 0, 0, 20);
 		GUI["i"]["Name"] = [[Hide]];
 
 		-- StarterGui.Peacock.Main.Navigation.Hide2
 		GUI["j"] = Instance.new("Frame", GUI["d"]);
 		GUI["j"]["BorderSizePixel"] = 0;
-		GUI["j"]["BackgroundColor3"] = Color3.fromRGB(137, 66, 9);
+		GUI["j"]["BackgroundColor3"] = Color3.fromRGB(16,16,16);
 		GUI["j"]["AnchorPoint"] = Vector2.new(1, 0);
 		GUI["j"]["Size"] = UDim2.new(0, 20, 1, 0);
 		GUI["j"]["Position"] = UDim2.new(1, 0, 0, 0);
