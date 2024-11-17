@@ -434,7 +434,7 @@ function Library:CreateLib(brackets)
 			do
 				-- StarterGui.Peacock.Main.ContentContainer.HomeTab.Button
 				Button["1d"] = Instance.new("Frame", Tab["1c"]);
-				Button["1d"]["BackgroundColor3"] = Color3.fromRGB(22,22,22);
+				Button["1d"]["BackgroundColor3"] = Color3.fromRGB(27,27,27);
 				Button["1d"]["Size"] = UDim2.new(1, 0, 0, 32);
 				Button["1d"]["Name"] = [[Button]];
 
