@@ -434,7 +434,7 @@ function Library:CreateLib(brackets)
 			do
 				-- StarterGui.Peacock.Main.ContentContainer.HomeTab.Button
 				Button["1d"] = Instance.new("Frame", Tab["1c"]);
-				Button["1d"]["BackgroundColor3"] = Color3.fromRGB(48,48,48);
+				Button["1d"]["BackgroundColor3"] = Color3.fromRGB(42,42,42);
 				Button["1d"]["Size"] = UDim2.new(1, 0, 0, 32);
 				Button["1d"]["Name"] = [[Button]];
 
@@ -512,7 +512,7 @@ function Library:CreateLib(brackets)
 
 					if input.UserInputType == Enum.UserInputType.MouseButton1 and Button.Hover then
 						Button.MouseDown = true
-						Library:tween(Button["1d"], {BackgroundColor3 = Color3.fromRGB(100, 48, 5)})
+						Library:tween(Button["1d"], {BackgroundColor3 = Color3.fromRGB(42,42,42)})
 						Library:tween(Button["1f"], {Color = Color3.fromRGB(200, 200, 200)})
 						brackets.callback()
 					end
@@ -525,10 +525,10 @@ function Library:CreateLib(brackets)
 						Button.MouseDown = false
 
 						if Button.Hover then
-							Library:tween(Button["1d"], {BackgroundColor3 = Color3.fromRGB(137, 66, 9)})
+							Library:tween(Button["1d"], {BackgroundColor3 = Color3.fromRGB(42,42,42)})
 							Library:tween(Button["1f"], {Color = Color3.fromRGB(102, 102, 102)})
 						else
-							Library:tween(Button["1d"], {BackgroundColor3 = Color3.fromRGB(137, 66, 9)})
+							Library:tween(Button["1d"], {BackgroundColor3 = Color3.fromRGB(42,42,42)})
 							Library:tween(Button["1f"], {Color = Color3.fromRGB(82, 82, 82)})
 						end
 					end
