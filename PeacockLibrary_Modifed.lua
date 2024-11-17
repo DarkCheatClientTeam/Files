@@ -141,7 +141,7 @@ function Library:CreateLib(brackets)
 		-- StarterGui.Peacock.Main.TopBar
 		GUI["5"] = Instance.new("Frame", GUI["2"]);
 		GUI["5"]["BorderSizePixel"] = 0;
-		GUI["5"]["BackgroundColor3"] = Color3.fromRGB(101, 49, 6);
+		GUI["5"]["BackgroundColor3"] = Color3.fromRGB(12,12,12);
 		GUI["5"]["Size"] = UDim2.new(0, 525, 0, 30);
 		GUI["5"]["Position"] = UDim2.new(-0.0007851123809814453, 0, -0.00313471257686615, 0);
 		GUI["5"]["Name"] = [[TopBar]];
