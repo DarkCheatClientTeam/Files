@@ -10,6 +10,7 @@ God_Stando Only Made This No Help
 local players = game:GetService("Players")
 local tweenService = game:GetService("TweenService")
 local input = game:GetService("UserInputService")
+local uis = game:GetService("UserInputService")
 local runService = game:GetService("RunService")
 local coreGui = game:GetService("CoreGui")
 function dragify(Frame)
