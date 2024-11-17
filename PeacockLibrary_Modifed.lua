@@ -495,16 +495,10 @@ function Library:CreateLib(brackets)
 			do
 				Button["1d"].MouseEnter:Connect(function()
 					Button.Hover = true
-
-					Library:tween(Button["1f"], {Color = Color3.fromRGB(102, 102, 102)})
 				end)
 
 				Button["1d"].MouseLeave:Connect(function()
 					Button.Hover = false
-
-					if not Button.MouseDown then
-						Library:tween(Button["1f"], {Color = Color3.fromRGB(82, 82, 82)})
-					end
 				end)
 
 				uis.InputBegan:Connect(function(input, gpe)
@@ -549,7 +543,7 @@ function Library:CreateLib(brackets)
 			do
 				-- StarterLabel.Peacock.Main.ContentContainer.HomeTab.Label
 				Label["19"] = Instance.new("Frame", Tab["1c"]);
-				Label["19"]["BackgroundColor3"] = Color3.fromRGB(101, 49, 6);
+				Label["19"]["BackgroundColor3"] = Color3.fromRGB(42,42,42);
 				Label["19"]["Size"] = UDim2.new(1, 0, 0, 26);
 				Label["19"]["Name"] = [[Label]];
 
