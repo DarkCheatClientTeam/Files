@@ -1,5 +1,5 @@
 --[[
-	Made By God_Stando | Recolore By Gregory909
+	Made By God_Stando | Recolored By Gregory909
 Developers:
 	God_Stando Discord | God_Stando#6979
 
@@ -115,7 +115,7 @@ function Library:CreateLib(brackets)
 
 		-- StarterGui.Peacock.Main
 		GUI["2"] = Instance.new("Frame", GUI["6g"]);
-		GUI["2"]["BackgroundColor3"] = Color3.fromRGB(255, 127, 15);
+		GUI["2"]["BackgroundColor3"] = Color3.fromRGB(15, 15, 15);
 		GUI["2"]["AnchorPoint"] = Vector2.new(0, 0)
 		GUI["2"]["Size"] = UDim2.new(0, 525, 0, 318);
 		GUI["2"]["Position"] = UDim2.fromOffset(0, 0, 0);
@@ -128,7 +128,7 @@ function Library:CreateLib(brackets)
 		-- StarterGUI.Peacock.Main.ContentContainer
 		GUI["1b"] = Instance.new("Frame", GUI["2"]);
 		GUI["1b"]["BorderSizePixel"] = 0;
-		GUI["1b"]["BackgroundColor3"] = Color3.fromRGB(144, 70, 9);
+		GUI["1b"]["BackgroundColor3"] = Color3.fromRGB(18,18,18);
 		GUI["1b"]["AnchorPoint"] = Vector2.new(1, 0);
 		GUI["1b"]["BackgroundTransparency"] = 1;
 		GUI["1b"]["Size"] = UDim2.new(1, -132, 1, -42);
@@ -154,7 +154,7 @@ function Library:CreateLib(brackets)
 		-- StarterGUI.Peacock.Main.ContentContainer.Fade.UIGradient
 		GUI["5b"] = Instance.new("UIGradient", GUI["5a"]);
 		GUI["5b"]["Rotation"] = 90;
-		GUI["5b"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(254, 126, 15)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(255, 127, 15))};
+		GUI["5b"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(12,12,12)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(13,13,13))};
 
 		-- StarterGui.Peacock.Main.TopBar
 		GUI["5"] = Instance.new("Frame", GUI["2"]);
@@ -170,7 +170,7 @@ function Library:CreateLib(brackets)
 		-- StarterGui.Peacock.Main.TopBar.Extension
 		GUI["7"] = Instance.new("Frame", GUI["5"]);
 		GUI["7"]["BorderSizePixel"] = 0;
-		GUI["7"]["BackgroundColor3"] = Color3.fromRGB(101, 49, 6);
+		GUI["7"]["BackgroundColor3"] = Color3.fromRGB(9,9,9);
 		GUI["7"]["AnchorPoint"] = Vector2.new(0, 1);
 		GUI["7"]["Size"] = UDim2.new(1, 0, 0.5, 0);
 		GUI["7"]["Position"] = UDim2.new(0, 0, 1, 0);
