@@ -333,6 +333,21 @@ function Library:CreateLib(brackets)
 			Tab["11"]["Font"] = Enum.Font.Ubuntu;
 			Tab["11"]["BackgroundTransparency"] = 1;
 
+			-- StarterGui.Peacock.Main.Navigation.ButtonHolder.MobileClick
+			
+			Tab["11Copy"] = Instance.new("Button", GUI["11"]);
+			Tab["11Copy"]["ZIndex"] = 0;
+			Tab["11Copy"]["BorderSizePixel"] = 0;
+			Tab["11Copy"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+			Tab["11Copy"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+			Tab["11Copy"]["TextSize"] = 12;
+			Tab["11Copy"]["TextColor3"] = Color3.fromRGB(200, 200, 200);
+			Tab["11Copy"]["Size"] = UDim2.new(1, 0, 1, 0);
+			Tab["11Copy"]["Text"] = brackets.name;
+			Tab["11Copy"]["Name"] = "MobileP_"..brackets.name;
+			Tab["11Copy"]["Font"] = Enum.Font.Ubuntu;
+			Tab["11Copy"]["BackgroundTransparency"] = 1;
+
 			-- StarterGui.Peacock.Main.Navigation.ButtonHolder.Inactive.UIPadding
 			Tab["12"] = Instance.new("UIPadding", Tab["11"]);
 			Tab["12"]["PaddingLeft"] = UDim.new(0, 28);
@@ -408,14 +423,14 @@ function Library:CreateLib(brackets)
 
 		-- Codes Stuff
 		do
-			Tab["11"].MouseEnter:Connect(function()
+			Tab["11Copy"].MouseEnter:Connect(function()
 				if not Tab.Active then
 					Library:tween(Tab["11"], {TextColor3 = Color3.fromRGB(255, 255, 255)})
 					Library:tween(Tab["13"], {ImageColor3 = Color3.fromRGB(255, 255, 255)})
 				end
 			end)
 
-			Tab["11"].MouseLeave:Connect(function()
+			Tab["11Copy"].MouseLeave:Connect(function()
 
 				if not Tab.Active then
 					Library:tween(Tab["11"], {TextColor3 = Color3.fromRGB(200, 200, 200)})
@@ -423,7 +438,7 @@ function Library:CreateLib(brackets)
 				end
 			end)
 
-		Tab["11"].MouseButton1Click:Connect(function()
+		Tab["11Copy"].MouseButton1Click:Connect(function()
 						Tab:Activate()
 			end)
 
