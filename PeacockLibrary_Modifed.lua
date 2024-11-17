@@ -536,7 +536,7 @@ function Library:CreateLib(brackets)
 					end
 				end)
 
-				uis.InputBegan:Connect(function(input, gpe)
+				input.InputBegan:Connect(function(input, gpe)
 					if gpe then return end
 
 					if input.UserInputType == Enum.UserInputType.MouseButton1 and Button.Hover then
