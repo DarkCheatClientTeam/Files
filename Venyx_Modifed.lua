@@ -1448,10 +1448,6 @@ do
 			end
 		}
 
-		utility:DraggingEnded(function()
-			draggingColor, draggingCanvas = false, false
-		end)
-
 		self:updateColorPicker(module)
 
 		hue, sat, brightness = Color3.toHSV(this.default)
@@ -1542,6 +1538,15 @@ do
 				utility:Wait()
 			end
 		end)
+                
+  
+                input.InputEnded:Connect(function(input)
+			if input.UserInputType ==  Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				draggingColor = false
+				draggingCanvas = false
+			end
+		end)
+
 
 		-- click events
 		local button = colorpicker.Button
@@ -1771,6 +1776,12 @@ do
 
 			wait(0.5)
 			utility:Tween(circle, {ImageTransparency = 1}, 0.2)
+		end)
+
+		input.InputEnded:Connect(function(input)
+			if input.UserInputType ==  Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				dragging = false
+			end
 		end)
 
 		textbox.FocusLost:Connect(function()
