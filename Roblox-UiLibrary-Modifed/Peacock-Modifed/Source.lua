@@ -1,5 +1,5 @@
 --[[
-	Made By God_Stando | Recolored By Gregory909
+	Made By God_Stando | Recolored And Modifed By Gregory909
 Developers:
 	God_Stando Discord | God_Stando#6979
 
