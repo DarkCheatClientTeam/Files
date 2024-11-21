@@ -795,6 +795,56 @@ do
 		return module
 	end
 
+	function section:addLabel(data)
+		local this = {}
+		this.title = data.title or "nil text"
+
+		local label = utility:Create("ImageLabel", {
+			Name = "Button",
+			Parent = self.container,
+			BackgroundTransparency = 1,
+			BorderSizePixel = 0,
+			Size = UDim2.new(1, 0, 0, 30),
+			ZIndex = 2,
+			Image = "rbxassetid://5028857472",
+			ImageColor3 = themes.DarkContrast,
+			ScaleType = Enum.ScaleType.Slice,
+			SliceCenter = Rect.new(2, 2, 298, 298)
+		}, {
+			utility:Create("TextLabel", {
+				Name = "Title",
+				BackgroundTransparency = 1,
+				Size = UDim2.new(1, 0, 1, 0),
+				ZIndex = 3,
+				Font = Enum.Font.Gotham,
+				Text = this.title,
+				TextColor3 = themes.TextColor,
+				TextSize = 12,
+				TextTransparency = 0.10000000149012
+			})
+		})
+
+		local module = {Instance = label, Options = this}
+		self.modules[#self.modules + 1] = module
+		--self:Resize()
+
+		local text = label.Title
+		local debounce
+
+		function this:Update(dataOptions)
+            -- // Overwriting settings
+            for i,v in pairs(dataOptions) do
+                if (module.Options[i] and i ~= "Update") then
+                    module.Options[i] = tostring(v)
+                end
+            end
+
+			return section:updateLabel(module)
+		end
+
+		return module
+	end
+
 	function section:addToggle(data)
 		local this = {}
 		this.title = data.title or "nil text"
