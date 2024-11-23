@@ -905,10 +905,6 @@ do
 		local module = {Instance = toggle, Options = this}
 		self.modules[#self.modules + 1] = module
 		--self:Resize()
-                if this.toggled == true then
-                     this.callback(this.toggled)
-		end
-		
 		self:updateToggle(module)
 
 		function this:Update(dataOptions)
