@@ -820,7 +820,8 @@ do
 				Text = this.title,
 				TextColor3 = themes.TextColor,
 				TextSize = 12,
-				TextTransparency = 0.10000000149012
+                                TextXAlignment = Enum.TextXAlignment.Left,
+				TextTransparency = 0.100000001,                        
 			})
 		})
 
@@ -916,6 +917,10 @@ do
 			end
 
 			return section:updateToggle(module)
+		end
+
+		if data.default == true then
+		     this.callback(this.toggled)
 		end
 
 		toggle.MouseButton1Click:Connect(function()
@@ -2187,6 +2192,10 @@ do
 	-- updates
 
 	function section:updateButton(module)
+		module.Instance.Title.Text = module.Options.title
+	end
+
+	function section:updateLabel(module)
 		module.Instance.Title.Text = module.Options.title
 	end
 
