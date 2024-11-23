@@ -918,10 +918,6 @@ do
 			return section:updateToggle(module)
 		end
 
-		if data.default == true then
-		     this.callback(this.toggled)
-		end
-
 		toggle.MouseButton1Click:Connect(function()
 			this.toggled = not this.toggled
 			self:updateToggle(module)
