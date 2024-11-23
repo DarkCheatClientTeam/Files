@@ -907,6 +907,12 @@ do
 		--self:Resize()
 		self:updateToggle(module)
 
+	        if data.default == true then
+		     this.toggled = true
+                     self:updateToggle(module)
+		     this.callback(this.toggled)
+		end
+
 		function this:Update(dataOptions)
 			-- // Overwriting settings
             for i,v in pairs(dataOptions) do
