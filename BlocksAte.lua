@@ -409,7 +409,7 @@ LocalPlr:addToggle({
         
     end})
     TrollIng:addButton({title = "Grief World", callback = function()
-)
+        
     end})
     
     TrollIng:addButton({title = "Delete Everything", callback = function()
@@ -453,6 +453,7 @@ LocalPlr:addToggle({
             print("File Didnt Founded!")
         end
     end})
+    
     Setting:addKeybind({title = "Toggle Ui" key = Enum.KeyCode.Tab, callback = function(b)
         UI:toggle()
     end})
