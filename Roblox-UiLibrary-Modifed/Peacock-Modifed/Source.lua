@@ -738,7 +738,7 @@ function Library:CreateLib(brackets)
                        local delta_inbut = Slider["32"].AbsolutePosition.X - initial
                        local SlidingFunction
                          SlidingFunction = game:GetService("RunService").Heartbeat:Connect(function()
-                           if dragging then
+b                          if dragging then
                               local xoffset = Mouse.X - delta_inbut
                                 if xoffset > 376 then
                                      xoffset = 376
@@ -770,11 +770,12 @@ function Library:CreateLib(brackets)
 		function Tab:NewToggle(brackets)
 			brackets = Library:validate({
 				name = "NewToggle",
+				default = false,
 				callback = function() end
 			}, brackets or {})
 
 			local Toggle = {
-				State = false
+				State = brackets.default
 			}
 
 			-- Render
@@ -873,6 +874,8 @@ function Library:CreateLib(brackets)
 				function Toggle:SetCallback(callback)
 					brackets.callback = callback
 				end
+
+				Toggle:Toggle(brackets.default)
 			end
 
 			-- Logic
@@ -1068,8 +1071,7 @@ function Library:CreateLib(brackets)
 		function Tab:NewPlayerDropdown(brackets)
 			brackets = Library:validate({
 				name = "NewDropdown",
-				callback = function(v) print(v) end,
-				items = {}
+				callback = function(v) print(v) end
 			}, brackets or {})
 
 			local Dropdown = {
@@ -1152,7 +1154,7 @@ function Library:CreateLib(brackets)
 				Dropdown["50"]["Name"] = [[OptionHolder]];
 				Dropdown["50"]["CanvasSize"] = UDim2.new(0, 0, 0, 0)
                 Dropdown["50"]["AutomaticCanvasSize"] = Enum.AutomaticSize.Y
-                Dropdown["50"]["ClipsDescendants"] = true
+	               Dropdown["50"]["ClipsDescendants"] = true
                 Dropdown["50"]["BackgroundTransparency"] = 1
                 Dropdown["50"]["ScrollBarThickness"] = 0
 
@@ -1219,6 +1221,16 @@ function Library:CreateLib(brackets)
                         Dropdown:Remove(i)
                     end
                 end
+
+	        function UpdateDropdownPlayer()
+		        Dropdown:Clear()
+			task.wait(.000000001)
+			for i,v in pairs(game.Players:GetPlayers()) do
+				if v.Name ~= game.Players.LocalPlayer.Name then
+					Dropdown.Add(v.Name)
+				end
+			end
+		end
                 
                 function Dropdown:ToggleDrop()
                     if Dropdown.Open then
@@ -1246,6 +1258,16 @@ function Library:CreateLib(brackets)
                 Dropdown["999"].MouseButton1Click:Connect(function()
                             Dropdown:ToggleDrop()
 				end)
+			end
+
+			do
+                        Dropdown:UpdateDropdownPlayer()
+			game.Players.PlayerAdded:Connect(function()
+			Dropdown:UpdateDropdownPlayer()		
+			end)  
+			game.Players.PlayerRemoving:Connect(function()
+                        Dropdown:UpdateDropdownPlayer()
+			end)
 			end
 
 			return Dropdown
