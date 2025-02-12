@@ -891,8 +891,9 @@ b                          if dragging then
         function Tab:NewDropdown(brackets)
 			brackets = Library:validate({
 				name = "NewDropdown",
+				default = "Testing"
 				callback = function(v) print(v) end,
-				items = {}
+				items = {"Testing", "Your Head"}
 			}, brackets or {})
 
 			local Dropdown = {
@@ -1063,6 +1064,7 @@ b                          if dragging then
                 Dropdown["999"].MouseButton1Click:Connect(function()
                             Dropdown:ToggleDrop()
 				end)
+			brackets.callback(brackets.default)
 			end
 
 			return Dropdown
