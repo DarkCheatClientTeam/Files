@@ -1375,7 +1375,7 @@ function redzlib:SetTheme(NewTheme)
 	SaveJson("redz library V5.json", redzlib.Save)
 	Theme = redzlib.Themes[NewTheme]
 	
-	Connection:FireConnection("ThemeChanged", NewTheme)
+	redzlib.Connection:FireConnection("ThemeChanged", NewTheme)
 	table.foreach(redzlib.Instances, function(_,Val)
 		if Val.Type == "Gradient" then
 			Val.Instance.Color = Theme["Color Hub 1"]
