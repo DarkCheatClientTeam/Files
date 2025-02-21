@@ -2545,8 +2545,7 @@ function redzlib:MakeWindow(Configs)
 		function Tab:AddPlayerDropdown(Configs)
 			local DName = Configs[1] or Configs.Name or Configs.Title or "Dropdown"
 			local DDesc = Configs[2] or Configs.Description or ""
-			local DMultiSelect = Configs[3] or Configs.MultiSelect or false
-			local Callback = Funcs:GetCallback(Configs, 4)
+			local Callback = Funcs:GetCallback(Configs, 3)
 			
 			local Button, LabelFunc = ButtonFrame(Container, DName, DDesc, UDim2.new(1, -180))
 			
@@ -2674,38 +2673,18 @@ function redzlib:MakeWindow(Configs)
 			end
 			
 			local AddNewOptions, GetOptions, AddOption, RemoveOption, Selected do
-				local MultiSelect = DMultiSelect
 				local Options = {}
-				Selected = MultiSelect and {}
+				Selected = ""
 				
 				local function CallbackSelected()
-					SetFlag(Flag, MultiSelect and Selected or tostring(Selected))
 					Funcs:FireCallback(Callback, Selected)
 				end
 				
 				local function UpdateLabel()
-					if MultiSelect then
-						local list = {}
-						for index, Value in pairs(Selected) do
-							if Value then
-								table.insert(list, index)
-							end
-						end
-						ActiveLabel.Text = #list > 0 and table.concat(list, ", ") or "..."
-					else
 						ActiveLabel.Text = tostring(Selected or "...")
-					end
 				end
 				
 				local function UpdateSelected()
-					if MultiSelect then
-						for _,v in pairs(Options) do
-							local nodes, Stats = v.nodes, v.Stats
-							CreateTween({nodes[2], "BackgroundTransparency", Stats and 0 or 0.8, 0.35})
-							CreateTween({nodes[2], "Size", Stats and UDim2.fromOffset(4, 12) or UDim2.fromOffset(4, 4), 0.35})
-							CreateTween({nodes[3], "TextTransparency", Stats and 0 or 0.4, 0.35})
-						end
-					else
 						for _,v in pairs(Options) do
 							local Slt = v.Value == Selected
 							local nodes = v.nodes
@@ -2713,23 +2692,14 @@ function redzlib:MakeWindow(Configs)
 							CreateTween({nodes[2], "Size", Slt and UDim2.fromOffset(4, 14) or UDim2.fromOffset(4, 4), 0.35})
 							CreateTween({nodes[3], "TextTransparency", Slt and 0 or 0.4, 0.35})
 						end
-					end
 					UpdateLabel()
 				end
 				
 				local function Select(Option)
-					if MultiSelect then
-						Option.Stats = not Option.Stats
-						Option.LastCB = tick()
-						
-						Selected[Option.Name] = Option.Stats
-						CallbackSelected()
-					else
 						Option.LastCB = tick()
 						
 						Selected = Option.Value
 						CallbackSelected()
-					end
 					UpdateSelected()
 				end
 				
@@ -2744,12 +2714,6 @@ function redzlib:MakeWindow(Configs)
 						Stats = false,
 						LastCB = 0
 					}
-					
-					if MultiSelect then
-						local Stats = Selected[Name]
-						Selected[Name] = Stats or false
-						Options[Name].Stats = Stats
-					end
 					
 					local Button = Make("Button", ScrollFrame, {
 						Name = "Option",
