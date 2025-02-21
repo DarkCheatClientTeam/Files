@@ -2806,10 +2806,6 @@ function redzlib:MakeWindow(Configs)
 					CallbackSelected()
 					UpdateSelected()
 				end
-				
-				table.foreach(DOptions, AddOption)
-				CallbackSelected()
-				UpdateSelected()
 			end
 			
 			Button.Activated:Connect(Minimize)
