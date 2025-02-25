@@ -2205,9 +2205,9 @@ function redzlib:MakeWindow(Configs)
 		function Tab:AddDropdown(Configs)
 			local DName = Configs[1] or Configs.Name or Configs.Title or "Dropdown"
 			local DDesc = Configs.Desc or Configs.Description or ""
-			local DOptions = Configs[2] or Configs.Options or {}
-			local OpDefault = Configs[3] or Configs.Default or {}
-			local Flag = Configs[5] or Configs.Flag or false
+			local DOptions = Configs[3] or Configs.Options or {}
+			local OpDefault = Configs[2] or Configs.Default or {}
+			local Flag = Configs.Flag or false
 			local DMultiSelect = Configs.MultiSelect or false
 			local Callback = Funcs:GetCallback(Configs, 4)
 			
@@ -2851,12 +2851,12 @@ function redzlib:MakeWindow(Configs)
 		function Tab:AddSlider(Configs)
 			local SName = Configs[1] or Configs.Name or Configs.Title or "Slider!"
 			local SDesc = Configs.Desc or Configs.Description or ""
-			local Min = Configs[2] or Configs.MinValue or Configs.Min or 10
-			local Max = Configs[3] or Configs.MaxValue or Configs.Max or 100
-			local Increase = Configs[4] or Configs.Increase or 1
-			local Callback = Funcs:GetCallback(Configs, 6)
-			local Flag = Configs[7] or Configs.Flag or false
-			local Default = Configs[5] or Configs.Default or 25
+			local Min = Configs[3] or Configs.MinValue or Configs.Min or 10
+			local Max = Configs[4] or Configs.MaxValue or Configs.Max or 100
+			local Increase = Configs[6] or Configs.Increase or 1
+			local Callback = Funcs:GetCallback(Configs, 5)
+			local Flag = Configs.Flag or false
+			local Default = Configs[2] or Configs.Default or 25
 			if CheckFlag(Flag) then Default = GetFlag(Flag) end
 			Min, Max = Min / Increase, Max / Increase
 			
@@ -2986,9 +2986,9 @@ function redzlib:MakeWindow(Configs)
 			local TName = Configs[1] or Configs.Name or Configs.Title or "Text Box"
 			local TDesc = Configs.Desc or Configs.Description or ""
 			local TDefault = Configs[2] or Configs.Default or ""
-			local TPlaceholderText = Configs[5] or Configs.PlaceholderText or "Input"
-			local TClearText = Configs[3] or Configs.ClearText or false
-			local Callback = Funcs:GetCallback(Configs, 4)
+			local TPlaceholderText = Configs.PlaceholderText or "Input"
+			local TClearText = Configs.ClearText or false
+			local Callback = Funcs:GetCallback(Configs, 3)
 			
 			if type(TDefault) ~= "string" or TDefault:gsub(" ", ""):len() < 1 then
 				TDefault = false
