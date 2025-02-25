@@ -2180,7 +2180,11 @@ function redzlib:MakeWindow(Configs)
 			local Toggle = {}
 			function Toggle:Visible(...) Funcs:ToggleVisible(Button, ...) end
 			function Toggle:Destroy() Button:Destroy() end
-			function Toggle:Callback(...) Funcs:InsertCallback(Callback, ...)() end
+			function Toggle:Callback(...) Funcs:InsertCallback(Callback, ...)()
+			    end
+			function Toggle:SetValue(value) 
+			    SetToggle(value)
+			end
 			function Toggle:Set(Val1, Val2)
 				if type(Val1) == "string" and type(Val2) == "string" then
 					LabelFunc:SetTitle(Val1)
@@ -2677,6 +2681,7 @@ function redzlib:MakeWindow(Configs)
 				Selected = ""
 				
 				local function CallbackSelected()
+					SetFlag(Flag, MultiSelect and Selected or tostring(Selected))
 					Funcs:FireCallback(Callback, Selected)
 				end
 				
