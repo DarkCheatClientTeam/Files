@@ -1012,7 +1012,7 @@ local Funcs = {} do
 		Obj.Visible = Bool ~= nil and Bool or Obj.Visible
 	end
 	
-	function Funcs:ToggleParent(Obj, Parent)
+	function Funcs:ToggleParent(Obj, Parent, Bool)
 		if Bool ~= nil then
 			Obj.Parent = Bool
 		else
@@ -1895,7 +1895,7 @@ function redzlib:MakeWindow(Configs)
 		end
 		function Tab:Visible(Bool)
 			Funcs:ToggleVisible(TabSelect, Bool)
-			Funcs:ToggleParent(Container, Bool, Containers)
+			Funcs:ToggleParent(Container, Container, Bool)
 		end
 		function Tab:Destroy() TabSelect:Destroy() Container:Destroy() end
 		
@@ -3167,7 +3167,7 @@ function redzlib:MakeWindow(Configs)
 		end
 		function Tab:Visible(Bool)
 			Funcs:ToggleVisible(TabSelect, Bool)
-			Funcs:ToggleParent(Container, Bool, Containers)
+			Funcs:ToggleParent(Container, Container)
 		end
 		function Tab:Destroy() TabSelect:Destroy() Container:Destroy() end
         
