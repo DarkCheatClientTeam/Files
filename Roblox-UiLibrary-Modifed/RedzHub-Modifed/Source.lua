@@ -1,4 +1,3 @@
-
 local MarketplaceService = game:GetService("MarketplaceService")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -1012,11 +1011,11 @@ local Funcs = {} do
 		Obj.Visible = Bool ~= nil and Bool or Obj.Visible
 	end
 	
-	function Funcs:ToggleParent(Obj, Parent, Bool)
-		if Bool ~= nil then
-			Obj.Parent = Bool
+	function Funcs:ToggleVisibility(Obj, Bool)
+	    if Bool ~= nil then
+		    Obj.Enabled = Bool
 		else
-			Obj.Parent = not Obj.Parent and Parent
+		    Obj.Enabled = not Obj.Enabled
 		end
 	end
 	
@@ -1895,7 +1894,7 @@ function redzlib:MakeWindow(Configs)
 		end
 		function Tab:Visible(Bool)
 			Funcs:ToggleVisible(TabSelect, Bool)
-			Funcs:ToggleParent(Container, Container, Bool)
+			Funcs:ToggleVisibility(Container, Bool)
 		end
 		function Tab:Destroy() TabSelect:Destroy() Container:Destroy() end
 		
@@ -3167,7 +3166,7 @@ function redzlib:MakeWindow(Configs)
 		end
 		function Tab:Visible(Bool)
 			Funcs:ToggleVisible(TabSelect, Bool)
-			Funcs:ToggleParent(Container, Container)
+			Funcs:ToggleVisibility(Container, Bool)
 		end
 		function Tab:Destroy() TabSelect:Destroy() Container:Destroy() end
         
