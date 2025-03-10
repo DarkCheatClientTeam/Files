@@ -1,3 +1,4 @@
+
 local MarketplaceService = game:GetService("MarketplaceService")
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -7,6 +8,7 @@ local CoreGui = game:GetService("CoreGui")
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
 local PlayerMouse = Player:GetMouse()
+local apiRequest = request or http_request or (http and http.request) or (syn and syn.request)
 
 local redzlib = {
 	Themes = {
@@ -1313,13 +1315,11 @@ local function ButtonFrame(Instance, Title, Description, HolderSize)
 		Text = "",
 		RichText = true
 	}), "DarkText")
-
 	local Frame = Make("Button", Instance, {
-		Size = UDim2.new(1, 0, 0, 25),
+		Size = testsize or UDim2.new(1, 0, 0, 25),
 		AutomaticSize = "Y",
 		Name = "Option"
 	})Make("Corner", Frame, UDim.new(0, 6))
-	
 	LabelHolder = Create("Frame", Frame, {
 		AutomaticSize = "Y",
 		BackgroundTransparency = 1,
@@ -1408,7 +1408,7 @@ function redzlib:SetTheme(NewTheme)
 	if not VerifyTheme(NewTheme) then return end
 	
 	redzlib.Save.Theme = NewTheme
-	SaveJson("redz library V5.json", redzlib.Save)
+	SaveJson("necroxis.json", redzlib.Save)
 	Theme = redzlib.Themes[NewTheme]
 	
 	redzlib.Connection:FireConnection("ThemeChanged", NewTheme)
@@ -1578,54 +1578,35 @@ function redzlib:MakeWindow(Configs)
 	ConnectSave(ControlSize1, function()
 		if not Minimized then
 			redzlib.Save.UISize = {MainFrame.Size.X.Offset, MainFrame.Size.Y.Offset}
-			SaveJson("redz library V5.json", redzlib.Save)
+			SaveJson("necroxis.json", redzlib.Save)
 		end
 	end)
 	
 	ConnectSave(ControlSize2, function()
 		redzlib.Save.TabSize = MainScroll.Size.X.Offset
-		SaveJson("redz library V5.json", redzlib.Save)
+		SaveJson("necroxis.json", redzlib.Save)
 	end)
 	
 	local ButtonsFolder = Create("Folder", TopBar, {
 		Name = "Buttons"
 	})
 	
-	local CloseButton = Create("ImageButton", {
+	local MinimizeButton = Create("ImageButton", {
 		Size = UDim2.new(0, 14, 0, 14),
 		Position = UDim2.new(1, -10, 0.5),
 		AnchorPoint = Vector2.new(1, 0.5),
 		BackgroundTransparency = 1,
-		Image = "rbxassetid://10747384394",
-		AutoButtonColor = false,
-		Name = "Close"
-	})
-	
-	local MinimizeButton = SetProps(CloseButton:Clone(), {
-		Position = UDim2.new(1, -35, 0.5),
 		Image = "rbxassetid://10734896206",
+		AutoButtonColor = false,
 		Name = "Minimize"
 	})
 	
 	SetChildren(ButtonsFolder, {
-		CloseButton,
 		MinimizeButton
 	})
 	
 	local Minimized, SaveSize, WaitClick
 	local Window, FirstTab = {}, false
-	function Window:CloseBtn()
-		local Dialog = Window:Dialog({
-			Title = "Close",
-			Text = "You Want Close Ui?",
-			Options = {
-				{"Confirm", function()
-					ScreenGui:Destroy()
-				end},
-				{"Cancel"}
-			}
-		})
-	end
 	function Window:MinimizeBtn()
 		if WaitClick then return end
 		WaitClick = true
@@ -3037,10 +3018,250 @@ function redzlib:MakeWindow(Configs)
 		end
 		return Tab
 	end
-	
-	CloseButton.Activated:Connect(Window.CloseBtn)
+	function Window:MakeDiscordChatTab(paste, Configs)
+		if type(paste) == "table" then Configs = paste end
+		local TName = Configs[1] or Configs.Title or "Tab!"
+		local TIcon = Configs[2] or Configs.Icon or ""
+		local TToken = Configs[3] or Configs.Token
+		local TChannel = Configs[4] or Configs.Channel or ""
+		local TWebhook = Configs[5] or Configs.Webhook or ""
+		
+		TIcon = redzlib:GetIcon(TIcon)
+		if not TIcon:find("rbxassetid://") or TIcon:gsub("rbxassetid://", ""):len() < 6 then
+			TIcon = false
+		end
+		
+		local TabSelect = Make("Button", MainScroll, {
+			Size = UDim2.new(1, 0, 0, 24)
+		})Make("Corner", TabSelect)
+		
+		local LabelTitle = InsertTheme(Create("TextLabel", TabSelect, {
+			Size = UDim2.new(1, TIcon and -25 or -15, 1),
+			Position = UDim2.fromOffset(TIcon and 25 or 15),
+			BackgroundTransparency = 1,
+			Font = Enum.Font.GothamMedium,
+			Text = TName,
+			TextColor3 = Theme["Color Text"],
+			TextSize = 10,
+			TextXAlignment = Enum.TextXAlignment.Left,
+			TextTransparency = (FirstTab and 0.3) or 0,
+			TextTruncate = "AtEnd"
+		}), "Text")
+		
+		local LabelIcon = InsertTheme(Create("ImageLabel", TabSelect, {
+			Position = UDim2.new(0, 8, 0.5),
+			Size = UDim2.new(0, 13, 0, 13),
+			AnchorPoint = Vector2.new(0, 0.5),
+			Image = TIcon or "",
+			BackgroundTransparency = 1,
+			ImageTransparency = (FirstTab and 0.3) or 0
+		}), "Text")
+		
+		local Selected = InsertTheme(Create("Frame", TabSelect, {
+			Size = FirstTab and UDim2.new(0, 4, 0, 4) or UDim2.new(0, 4, 0, 13),
+			Position = UDim2.new(0, 1, 0.5),
+			AnchorPoint = Vector2.new(0, 0.5),
+			BackgroundColor3 = Theme["Color Theme"],
+			BackgroundTransparency = FirstTab and 1 or 0
+		}), "Theme")Make("Corner", Selected, UDim.new(0.5, 0))
+		local Container = Create("Frame", {
+			Size = UDim2.new(1, 0, 1, 0),
+			Position = UDim2.new(0, 0, 1),
+			AnchorPoint = Vector2.new(0, 1),
+			BackgroundTransparency = 1,
+			BorderSizePixel = 0,
+			Name = ("Container %i [ %s ]"):format(#ContainerList + 1, TName)
+		})
+		
+		local Container_2 = InsertTheme(Create("ScrollingFrame", Container, {
+			Size = UDim2.new(1, 0, 0.86, 0),
+			Position = UDim2.new(0, 0, 0, 0),
+			AnchorPoint = Vector2.new(0, 0),
+			ScrollBarThickness = 1.5,
+			BackgroundTransparency = 1,
+			ScrollBarImageTransparency = 0.2,
+			ScrollBarImageColor3 = Theme["Color Theme"],
+			AutomaticCanvasSize = "Y",
+			ScrollingDirection = "Y",
+			BorderSizePixel = 0,
+			CanvasSize = UDim2.new(),
+			Name = "Message_Container"
+		}, {
+			Create("UIPadding", {
+				PaddingLeft = UDim.new(0, 10),
+				PaddingRight = UDim.new(0, 10),
+				PaddingTop = UDim.new(0, 10),
+				PaddingBottom = UDim.new(0, 10)
+			}), Create("UIListLayout", {
+				Padding = UDim.new(0, 5)
+			})
+		}), "ScrollBar")
+		
+		local TextBoxInput = InsertTheme(Create("TextBox", Container, {
+				Size = UDim2.new(0.78, 0, 0.1, 0),
+				AnchorPoint = Vector2.new(0, 0),
+				Position = UDim2.new(0, 0, 0.88, 0),
+				BackgroundTransparency = 0.95,
+				Font = Enum.Font.GothamBold,
+				TextScaled = true,
+				TextColor3 = Theme["Color Text"],
+				ClearTextOnFocus = false,
+				PlaceholderText = "Example",
+				Text = "Enter Message Here.."
+			}), "Text")Make("Corner", TextBoxInput, UDim.new(0, 2))
+	local Frame = Make("Button", Container, {
+		Size = UDim2.new(0.16, 0, 0.1, 0),
+		Name = "SendMessage",
+		Font = Enum.Font.GothamBold,
+		TextScaled = true,
+		TextColor3 = Theme["Color Text"],
+		Text = "Send",
+		Position = UDim2.new(0.81, 0, 0.88, 0)
+	}) Make("Corner", Frame, UDim.new(0, 2))
+		table.insert(ContainerList, Container)
+		
+		if not FirstTab then Container.Parent = Containers end
+		
+		local function Tabs()
+			if Container.Parent then return end
+			for _,Frame in pairs(ContainerList) do
+				if Frame:IsA("Frame") and Frame ~= Container then
+					Frame.Parent = nil
+				end
+			end
+			Container.Parent = Containers
+			Container.Size = UDim2.new(1, 0, 1, 150)
+			table.foreach(redzlib.Tabs, function(_,Tab)
+				if Tab.Cont ~= Container then
+					Tab.func:Disable()
+				end
+			end)
+			CreateTween({Container, "Size", UDim2.new(1, 0, 1, 0), 0.3})
+			CreateTween({LabelTitle, "TextTransparency", 0, 0.35})
+			CreateTween({LabelIcon, "ImageTransparency", 0, 0.35})
+			CreateTween({Selected, "Size", UDim2.new(0, 4, 0, 13), 0.35})
+			CreateTween({Selected, "BackgroundTransparency", 0, 0.35})
+		end
+		TabSelect.Activated:Connect(Tabs)
+		local function Input()
+				local Text = TextBoxInput.Text
+				if Text:gsub(" ", ""):len() > 0 then
+					TextBoxInput.Text = Text
+				end
+			end
+		FirstTab = true
+		local lastedmessage
+		local Tab = {}
+		table.insert(redzlib.Tabs, {TabInfo = {Name = TName, Icon = TIcon}, func = Tab, Cont = Container})
+		Tab.Cont = Container
+		
+		function Tab:Disable()
+			Container.Parent = nil
+			CreateTween({LabelTitle, "TextTransparency", 0.3, 0.35})
+			CreateTween({LabelIcon, "ImageTransparency", 0.3, 0.35})
+			CreateTween({Selected, "Size", UDim2.new(0, 4, 0, 4), 0.35})
+			CreateTween({Selected, "BackgroundTransparency", 1, 0.35})
+		end
+		function Tab:Enable()
+			Tabs()
+		end
+		function Tab:Visible(Bool)
+			Funcs:ToggleVisible(TabSelect, Bool)
+			Funcs:ToggleParent(Container, Bool, Containers)
+		end
+		function Tab:Destroy() TabSelect:Destroy() Container:Destroy() end
+        
+        function Tab:AddMessage(username, content)
+            local PName = username
+			local PDesc = content
+			
+			local Frame, LabelFunc = ButtonFrame(Container_2, PName, PDesc, UDim2.new(1, -20))
+			
+			local Paragraph = {}
+			function Paragraph:Visible(...) Funcs:ToggleVisible(Frame, ...) end
+			function Paragraph:Destroy() Frame:Destroy() end
+			return Paragraph
+        end
+        
+        function GetLatestMessages()
+    local success, response = pcall(function()
+        return apiRequest({
+            Url = "https://discord.com/api/v10/channels/"..TChannel.."/messages?limit=15",
+            Method = "GET",
+            Headers = {
+        ["Authorization"] = "Bot "..TToken
+    }
+        })
+    end)
+
+    if success and response.Success then
+        local messages = game:GetService("HttpService"):JSONDecode(response.Body)
+        table.sort(messages, function(a, b) return a.id < b.id end)
+        for _, message in ipairs(messages) do
+            if message.author.username ~= "Bacon Bypass" and not message.content:find("https://cdn.discordapp.com/attachments/") then
+            lastedmessage = message.id
+            Tab:AddMessage(message.author.username, message.content)
+            end
+        end
+        return messages
+    else
+        warn("Error On Messages: " .. (tostring(HttpService:JSONEncode(response) or "Unknow Error")))
+        return {}
+    end
+    game:GetService("RunService").RenderStepped:Connect(function()
+        task.wait()
+            local success, response = pcall(function()
+        return apiRequest({
+            Url = "https://discord.com/api/v10/channels/"..TChannel.."/messages?limit=1",
+            Method = "GET",
+            Headers = {
+        ["Authorization"] = "Bot "..TToken
+    }
+        })
+    end)
+
+    if success and response.Success then
+        local messages = game:GetService("HttpService"):JSONDecode(response.Body)
+        table.sort(messages, function(a, b) return a.id < b.id end)
+        for _, message in ipairs(messages) do
+            if not lastedmessage and message.id > lastedmessage and message.author.username ~= "Bacon Bypass" and not message.content:find("https://cdn.discordapp.com/attachments/") then
+                print("[" .. message.author.username .. "]: " .. message.content)
+                lastedmessage = message.id
+                Tab:AddMessage(message.author.username, message.content)
+            end
+        end
+    end
+    end)
+        end
+GetLatestMessages()
+        TextBoxInput.FocusLost:Connect(function()
+			Input()
+		end)
+		Frame.Activated:Connect(function()
+		if TextBoxInput == "" then return end
+    local messageData = {
+        username = game.Players.LocalPlayer.Name,
+        avatar_url = game.HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="..game.Players.LocalPlayer.UserId.."&size=420x420&format=Png&isCircular=false")).data[1].imageUrl,
+        content = TextBoxInput.Text
+    }
+
+    local jsonData = HttpService:JSONEncode(messageData)
+
+    local success, response = pcall(function()
+        return apiRequest({Url = TWebhook, Method = "POST", Headers = { ["Content-Type"] = "application/json"}, Body = jsonData})
+    end)
+
+    if success then
+        print("Done Send!")
+        Tab:AddMessage(game.Players.LocalPlayer.Name, TextBoxInput.Text)
+        TextBoxInput.Text = ""
+    else
+        warn(response)
+    end
+		end)
+        return Tab
+		end
 	MinimizeButton.Activated:Connect(Window.MinimizeBtn)
 	return Window
 end
-
 return redzlib
