@@ -3211,7 +3211,7 @@ function redzlib:MakeWindow(Configs)
         warn("Error On Messages: " .. (tostring(HttpService:JSONEncode(response) or "Unknow Error")))
         return {}
     end
-    while true d
+    while true do
             local success, response = pcall(function()
         return apiRequest({
             Url = "https://discord.com/api/v10/channels/"..TChannel.."/messages?limit=1",
