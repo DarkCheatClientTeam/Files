@@ -1396,7 +1396,7 @@ function redzlib:GetIcon(index)
 	  return self.Icons[index]
 	end
 	
-	for Name, Icon in self.Icons do
+for Name, Icon in self.Icons do
 		if Name == index then
 			return Icon
 		elseif not firstMatch and Name:find(index, 1, true) then
@@ -1446,6 +1446,9 @@ end
 function redzlib:MakeWindow(Configs)
 	local WTitle = Configs[1] or Configs.Name or Configs.Title or "redz Library V5"
 	local WMiniText = Configs[2] or Configs.SubTitle or "by : redz9999"
+	local WSize = Configs[3] or Configs.ScaleSize or redzlib:GetScale()
+
+	if WSize ~= redzlib:GetScale() then redzlib:SetScale(WSize) end
 	
 	Settings.ScriptFile = Configs[3] or Configs.SaveFolder or false
 	
