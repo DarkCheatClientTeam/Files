@@ -1,5 +1,5 @@
 {
-  "SoftwareVersion": "1.0",
-  "SoftwareUrl": "https://drive.usercontent.google.com/download?id=1kqQmO-ffPJlvLKQ-a3MWLJQm2M_dVOG2&export=download&authuser=0&confirm=t&uuid=33546949-7361-4b23-b5dc-056051d7d9bd&at=AEz70l4VuGkHLhmqeKSUoyT1cX-u:1743425184429",
-  "Status": "True"
+"SoftwareVersion": "1.0",
+"SoftwareUrl": "https://drive.usercontent.google.com/download?id=1kqQmO-ffPJlvLKQ-a3MWLJQm2M_dVOG2&export=download&authuser=0&confirm=t&uuid=33546949-7361-4b23-b5dc-056051d7d9bd&at=AEz70l4VuGkHLhmqeKSUoyT1cX-u:1743425184429",
+"Status": "True"
 }
