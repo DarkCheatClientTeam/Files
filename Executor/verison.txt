@@ -1,5 +1,5 @@
 {
-  ["SoftwareVersion"] = ,
-  ["SoftwareUrl"] = ,
+  ["SoftwareVersion"] = "1.0",
+  ["SoftwareUrl"] = "",
   ["Status"] = "True"
 }
