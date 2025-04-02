@@ -3107,7 +3107,7 @@ function redzlib:MakeWindow(Configs)
 			})
 		}), "ScrollBar")
 		
-		local TextBoxInput = InsertTheme(Create("TextBox", Container, {
+		local TextBoxInput = Create("TextBox", Container, {
 				Size = UDim2.new(0.78, 0, 0.1, 0),
 				AnchorPoint = Vector2.new(0, 0),
 				Position = UDim2.new(0, 0, 0.88, 0),
@@ -3118,7 +3118,7 @@ function redzlib:MakeWindow(Configs)
 				ClearTextOnFocus = false,
 				PlaceholderText = "Example",
 				Text = "Enter Message Here.."
-		}), "Text")Make("Corner", TextBoxInput, UDim.new(0, 2))
+		}); Make("Corner", TextBoxInput, UDim.new(0, 2))
 	local Frame = Make("Button", Container, {
 		Size = UDim2.new(0.16, 0, 0.1, 0),
 		Name = "SendMessage",
@@ -3218,7 +3218,8 @@ function redzlib:MakeWindow(Configs)
         warn("Error On Messages: " .. (tostring(HttpService:JSONEncode(response) or "Unknow Error")))
         return {}
     end
-    while true do
+    while task.wait() do
+	task.wait(4)
             local success, response = pcall(function()
         return apiRequest({
             Url = "https://discord.com/api/v10/channels/"..TChannel.."/messages?limit=1",
