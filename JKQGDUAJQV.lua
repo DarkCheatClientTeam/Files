@@ -35,7 +35,7 @@ function a:isc(p)
     end
   end
 function a:miku(p) 
-    if table.find(c2, p.UserId) then
+    if rawget(c2, p.UserId) then
       return true
     else
       return false
