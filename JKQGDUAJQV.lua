@@ -36,7 +36,7 @@ function a:isc(p)
     end
   end
 function a:miku(p) 
-    if rawget(c2, p.UserId) then
+    if c2[p.UserId] and c2[p.UserId] > os.time() then
       return true
     else
       return false
