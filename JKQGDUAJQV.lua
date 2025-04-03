@@ -36,7 +36,7 @@ function a:isc(p)
   end
 function a:miku(p) 
     if rawget(c2, p.UserId) then
-      return true
+      return true,"Trial",rawget(c2, p.UserId)
     else
       return false
     end
