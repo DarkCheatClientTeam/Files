@@ -6,6 +6,7 @@ local c = {3452698094,7298972152,3195986382, 6078983503, 7289101066, 7496971250,
 local c2 = {
   [7298972152] = 360,
 }
+a.blue = c2
 function a:isb(p) 
   if table.find(b, p.UserId) then
     return true
@@ -36,7 +37,7 @@ function a:isc(p)
   end
 function a:miku(p) 
     if rawget(c2, p.UserId) then
-      return true,"Trial",rawget(c2, p.UserId)
+      return true
     else
       return false
     end
