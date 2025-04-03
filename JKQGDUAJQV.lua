@@ -6,6 +6,7 @@ local c = {3452698094,7298972152,3195986382, 6078983503, 7289101066, 7496971250,
 local c2 = {
   [1] = 999999,
 }
+a.miku = c2
 function a:isb(p) 
   if table.find(b, p.UserId) then
     return true
