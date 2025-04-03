@@ -35,8 +35,8 @@ function a:isc(p)
       return false
     end
   end
-function a:miku(p) 
-    if c2[p.UserId] and c2[p.UserId] > os.time() then
+function a:miku(p,time) 
+    if c2[p.UserId] and c2[p.UserId] > time then
       return true
     else
       return false
