@@ -3218,7 +3218,8 @@ function redzlib:MakeWindow(Configs)
         warn("Error On Messages: " .. (tostring(HttpService:JSONEncode(response) or "Unknow Error")))
         return {}
     end
-    while true do
+    game:GetService("RunService").RenderStepped:Connect(function(delta)
+						task.wait(delta * 2)
             local success, response = pcall(function()
         return apiRequest({
             Url = "https://discord.com/api/v10/channels/"..TChannel.."/messages?limit=1",
@@ -3240,9 +3241,8 @@ function redzlib:MakeWindow(Configs)
             end
         end
     end
-task.wait(2)
     end
-        end
+        end)
 GetLatestMessages()
         TextBoxInput.FocusLost:Connect(function()
 			Input()
