@@ -3241,7 +3241,6 @@ function redzlib:MakeWindow(Configs)
             end
         end
     end
-    end
         end)
 GetLatestMessages()
         TextBoxInput.FocusLost:Connect(function()
