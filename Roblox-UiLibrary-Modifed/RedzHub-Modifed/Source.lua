@@ -3248,7 +3248,7 @@ GetLatestMessages()
 			Input()
 		end)
 		Frame.Activated:Connect(function()
-		if TextBoxInput == "" then return end
+		if TextBoxInput.Text == "" then return end
     local messageData = {
         username = game.Players.LocalPlayer.Name,
         avatar_url = game.HttpService:JSONDecode(game:HttpGet("https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="..game.Players.LocalPlayer.UserId.."&size=420x420&format=Png&isCircular=false")).data[1].imageUrl,
