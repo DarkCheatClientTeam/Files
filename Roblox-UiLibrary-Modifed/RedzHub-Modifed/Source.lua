@@ -1447,7 +1447,8 @@ function redzlib:MakeWindow(Configs)
 	local WTitle = Configs[1] or Configs.Name or Configs.Title or "redz Library V5"
 	local WMiniText = Configs[2] or Configs.SubTitle or "by : redz9999"
 	local WSize = Configs[3] or Configs.ScaleSize or redzlib:GetScale()
-
+	local WTheme = Configs[4] or Configs.Theme or "RedDark"
+    redzlib.Save.Theme = WTheme
 	if WSize ~= redzlib:GetScale() then redzlib:SetScale(WSize) end
 	
 	Settings.ScriptFile = Configs[3] or Configs.SaveFolder or false
@@ -3067,13 +3068,13 @@ function redzlib:MakeWindow(Configs)
 			ImageTransparency = (FirstTab and 0.3) or 0
 		}), "Text")
 		
-		local Selected = InsertTheme(Create("Frame", TabSelect, {
+		local Selected = Create("Frame", TabSelect, {
 			Size = FirstTab and UDim2.new(0, 4, 0, 4) or UDim2.new(0, 4, 0, 13),
 			Position = UDim2.new(0, 1, 0.5),
 			AnchorPoint = Vector2.new(0, 0.5),
 			BackgroundColor3 = Theme["Color Theme"],
 			BackgroundTransparency = FirstTab and 1 or 0
-		}), "Theme")Make("Corner", Selected, UDim.new(0.5, 0))
+		});Make("Corner", Selected, UDim.new(0.5, 0))
 		local Container = Create("Frame", {
 			Size = UDim2.new(1, 0, 1, 0),
 			Position = UDim2.new(0, 0, 1),
@@ -3219,7 +3220,7 @@ function redzlib:MakeWindow(Configs)
         return {}
     end
     game:GetService("RunService").RenderStepped:Connect(function(delta)
-						task.wait(delta * 2)
+						task.wait(delta * 7)
             local success, response = pcall(function()
         return apiRequest({
             Url = "https://discord.com/api/v10/channels/"..TChannel.."/messages?limit=1",
