@@ -7,6 +7,18 @@ local c2 = {
   [7298972152] = 360,
 }
 a.blue = c2
+function a:listb()
+return b
+end
+function a:listb1()
+return b1
+end
+function a:listb2()
+return b2
+end
+function a:listc()
+return c
+end
 function a:isb(p) 
   if table.find(b, p.UserId) then
     return true
