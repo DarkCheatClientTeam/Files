@@ -1796,7 +1796,6 @@ function redzlib:MakeWindow(Configs)
 	
 	local ContainerList = {}
 	function Window:MakeTab(paste, Configs)
-		task.spawn(function()
 		if type(paste) == "table" then Configs = paste end
 		local TName = Configs[1] or Configs.Title or "Tab!"
 		local TIcon = Configs[2] or Configs.Icon or ""
@@ -2009,6 +2008,7 @@ function redzlib:MakeWindow(Configs)
 			return Button
 		end
 		function Tab:AddToggle(Configs)
+			task.spawn(function()
 			local TName = Configs[1] or Configs.Name or Configs.Title or "Toggle"
 			local TDesc = Configs.Desc or Configs.Description or ""
 			local Callback = Funcs:GetCallback(Configs, 3)
@@ -2086,8 +2086,10 @@ function redzlib:MakeWindow(Configs)
 				end
 			end
 			return Toggle
+			end)
 		end
 		function Tab:AddDropdown(Configs)
+			task.spawn(function()
 			local DName = Configs[1] or Configs.Name or Configs.Title or "Dropdown"
 			local DDesc = Configs.Desc or Configs.Description or ""
 			local DOptions = Configs[3] or Configs.Options or {}
@@ -2430,8 +2432,10 @@ function redzlib:MakeWindow(Configs)
 				end
 			end
 			return Dropdown
+			end)
 		end
 		function Tab:AddSlider(Configs)
+			task.spawn(function()
 			local SName = Configs[1] or Configs.Name or Configs.Title or "Slider!"
 			local SDesc = Configs.Desc or Configs.Description or ""
 			local Min = Configs[3] or Configs.MinValue or Configs.Min or 10
@@ -2564,8 +2568,10 @@ function redzlib:MakeWindow(Configs)
 			function Slider:Visible(...) Funcs:ToggleVisible(Button, ...) end
 			function Slider:Destroy() Button:Destroy() end
 			return Slider
+			end)
 		end
 		function Tab:AddTextBox(Configs)
+			task.spawn(function()
 			local TName = Configs[1] or Configs.Name or Configs.Title or "Text Box"
 			local TDesc = Configs.Desc or Configs.Description or ""
 			local TDefault = Configs[2] or Configs.Default or ""
@@ -2630,8 +2636,10 @@ function redzlib:MakeWindow(Configs)
 			function TextBox:Visible(...) Funcs:ToggleVisible(Button, ...) end
 			function TextBox:Destroy() Button:Destroy() end
 			return TextBox
+			end)
 		end
 		function Tab:AddDiscordInvite(Configs)
+			task.spawn(function()
 			local Title = Configs[1] or Configs.Name or Configs.Title or "Discord"
 			local Desc = Configs.Desc or Configs.Description or ""
 			local Logo = Configs[2] or Configs.Logo or ""
@@ -2725,9 +2733,9 @@ function redzlib:MakeWindow(Configs)
 			function DiscordInvite:Destroy() InviteHolder:Destroy() end
 			function DiscordInvite:Visible(...) Funcs:ToggleVisible(InviteHolder, ...) end
 			return DiscordInvite
+			end)
 		end
 		return Tab
-		end)
 	end
 	function Window:MakeDiscordChatTab(paste, Configs)
 		if type(paste) == "table" then Configs = paste end
