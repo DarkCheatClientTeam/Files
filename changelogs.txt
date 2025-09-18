@@ -1,4 +1,3 @@
-{ 
 < Script >
   [ Hub ]
     [ * ][ Ui ] - Added spome fixes on Xeno!
@@ -12,4 +11,3 @@
     [ * ][ Fix Generator ] - Fixed troubles on kicks!
 < Executor >
   [ * ][ Injection ] - Fixed some random crashes on inject!
-}
