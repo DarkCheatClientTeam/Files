@@ -1,13 +1,19 @@
 < Script >
-  [ Hub ]
-    [ * ][ Ui ] - Added spome fixes on Xeno!
-  [ Universal ]
-    [ * ][ Aimbot ] - Fixed some error on aiming!
-  [ MM2 ]
-    [ * ][ Loading ] - Fixed error 542!
-  [ Doors ]
-    [ * ][ Aimbot ] - Fixed some error on aiming!
-  [ Forsaken ]
-    [ * ][ Fix Generator ] - Fixed troubles on kicks!
+Hub
+  • UI – Fixed issues with Xeno
+
+Universal
+  • Aimbot – Improved aiming accuracy
+
+MM2
+  • Loading – Patched error 542
+
+Doors
+  • Aimbot – Fixed aiming bugs
+
+Forsaken
+  • Fix Generator – Solved kick issues
+
+
 < Executor >
-  [ * ][ Injection ] - Fixed some random crashes on inject!
+  • Injection – Fixed random injection crashes
