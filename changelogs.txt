@@ -1,19 +1,19 @@
 < Script >
 Hub
-  • UI – Fixed issues with Xeno
+  - UI – Fixed issues with Xeno
 
 Universal
-  • Aimbot – Improved aiming accuracy
+  - Aimbot – Improved aiming accuracy
 
 MM2
-  • Loading – Patched error 542
+  - Loading – Patched error 542
 
 Doors
-  • Aimbot – Fixed aiming bugs
+  - Aimbot – Fixed aiming bugs
 
 Forsaken
-  • Fix Generator – Solved kick issues
+  - Fix Generator – Solved kick issues
 
 
 < Executor >
-  • Injection – Fixed random injection crashes
+  - Injection – Fixed random injection crashes
